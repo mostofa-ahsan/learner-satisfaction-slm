@@ -56,17 +56,23 @@ def key_works() -> tuple[bool, str]:
     """Free auth check. Re-reads .env each time so a fixed key is picked up."""
     from dotenv import dotenv_values
     import anthropic
-    key = (dotenv_values(ROOT / ".env").get("ANTHROPIC_API_KEY") or "").strip()
+    env = dotenv_values(ROOT / ".env")
+    key = (env.get("ANTHROPIC_API_KEY") or "").strip()
     if not key:
         return False, "ANTHROPIC_API_KEY missing from .env"
     try:
-        anthropic.Anthropic(api_key=key, max_retries=2, timeout=30).models.retrieve("claude-haiku-5-5")
+        ws = (env.get("ANTHROPIC_WORKSPACE_ID") or "").strip()
+        anthropic.Anthropic(api_key=key, max_retries=2, timeout=30,
+                            default_headers={"anthropic-workspace-id": ws} if ws else None).models.retrieve("claude-haiku-5-5")
         os.environ["ANTHROPIC_API_KEY"] = key  # children inherit; generate_qa's load_dotenv won't override
+        if ws:
+            os.environ["ANTHROPIC_WORKSPACE_ID"] = ws
         return True, "ok"
     except anthropic.AuthenticationError as e:
         return False, f"401 authentication_error ({getattr(e, 'request_id', '')})"
     except anthropic.APIStatusError as e:
-        return False, f"HTTP {e.status_code}"
+        msg = e.body.get("error", {}).get("message", "") if isinstance(e.body, dict) else ""
+        return False, f"HTTP {e.status_code}: {msg[:160]}"
     except anthropic.APIConnectionError as e:
         return False, f"connection error: {e}"
 

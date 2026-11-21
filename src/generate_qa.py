@@ -18,6 +18,7 @@ import argparse
 import asyncio
 import json
 import logging
+import os
 import random
 import re
 import sys
@@ -189,7 +190,10 @@ class Runner:
         self.done = self.ok = self.skipped = self.invalid = self.errors = 0
         self.t0 = time.monotonic()
         self.est_call_cost = 0.0015  # updated from observed mean
-        self.client = anthropic.AsyncAnthropic(max_retries=0, timeout=120.0)
+        # Keys not scoped to a workspace need the workspace header; set ANTHROPIC_WORKSPACE_ID in .env.
+        ws = os.environ.get("ANTHROPIC_WORKSPACE_ID", "").strip()
+        self.client = anthropic.AsyncAnthropic(max_retries=0, timeout=120.0,
+                                               default_headers={"anthropic-workspace-id": ws} if ws else None)
         self.system = build_system(load_seeds(Path(args.seeds)))
         self.qa_f = open(out_dir / "qa_pairs.jsonl", "a", encoding="utf-8")
         self.pages_f = open(out_dir / "pages_done.jsonl", "a", encoding="utf-8")
