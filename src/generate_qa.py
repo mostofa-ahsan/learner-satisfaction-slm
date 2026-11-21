@@ -49,10 +49,20 @@ MAX_API_TRIES = 8         # transient API errors (429/5xx/529/connection)
 RETRY_STATUS = {408, 409, 429, 500, 502, 503, 504, 529}
 ET = ZoneInfo("America/New_York")
 
+_DOC_NOUNS = (r"(study|studies|paper|article|chapter|page|text|passage|document|report|thesis|dissertation|book|"
+              r"section|excerpt|source|author|authors|researchers?|survey|review|discussion|introduction|part|"
+              r"guide|analysis|work|extract|essay|writer)")
+# Questions: any pointer to "the/this <document noun>" (except "the study of X", "the analysis of X", ...).
 SOURCE_REF = re.compile(
-    r"\b(this|the|that|these|above)\s+(study|studies|paper|article|chapter|page|text|passage|document|"
-    r"report|thesis|dissertation|book|section|excerpt|source|author|authors|researchers?|survey|review)\b"
+    rf"\b(this|the|that|these|above|present|current)\s+{_DOC_NOUNS}\b"
     r"(?!\s+(of|on|in|about|by|that|which|with|from|among|conducted|involving|examining)\b)",
+    re.I,
+)
+# Answers: narrower list (words like "analysis"/"survey" are legitimate in answer prose).
+ANSWER_SOURCE_REF = re.compile(
+    r"\b(the|this)\s+(page|passage|text|excerpt|document|chapter|study|paper|article|authors?|researchers|"
+    r"guide|dissertation|thesis|book|introduction|discussion)\b"
+    r"(?!\s+(of|on|in|about|by|that|which|conducted|involving|examining)\b)",
     re.I,
 )
 REFUSAL = re.compile(
@@ -161,6 +171,9 @@ def validate(obj: dict) -> tuple[str, list[dict]]:
             errs.append(f"pair {i}: answer has {nw} words (allowed 40-200, target 60-150)")
         if SOURCE_REF.search(q):
             errs.append(f"pair {i}: question refers to the source ('{SOURCE_REF.search(q).group(0)}'); name the concept instead")
+        if ANSWER_SOURCE_REF.search(a):
+            errs.append(f"pair {i}: answer describes the source ('{ANSWER_SOURCE_REF.search(a).group(0)}'); "
+                        "state the content directly, e.g. 'A survey of ... found' instead of 'The study found'")
         if REFUSAL.search(a) or REFUSAL.search(q):
             errs.append(f"pair {i}: refusal/hedging about missing information")
         if LEAK.search(a) or LEAK.search(q):

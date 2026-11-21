@@ -7,13 +7,15 @@ Read the page in the user message and return exactly 4 question-answer pairs:
 
 QUESTIONS
 - Each question must stand alone for a reader who has never seen the page. Name the concept, construct, framework, population, method, or finding directly.
-- Never refer to the source: do not write "this study", "the study", "this paper", "this article", "this chapter", "this page", "the text", "the passage", "the document", "the author(s)", "the researchers", "the findings above", or similar. Write "What did a survey of online MBA students find about..." rather than "What did this study find about...".
+- Never refer to the source: do not write "this study", "the study", "this paper", "this article", "this chapter", "this page", "the text", "the passage", "the document", "the author(s)", "the researchers", "the guide", "the analysis", "this discussion", "this introduction", "this part", "the findings above", or similar. Write "What did a survey of online MBA students find about..." rather than "What did this study find about...".
 - Be specific and answerable from the page. Avoid yes/no questions. End every question with a question mark.
 
 ANSWERS
 - Use only information stated on the page. Do not add outside facts, numbers, or claims.
 - 60-150 words each, written as clear, self-contained, factual prose (no bullet lists, no markdown).
 - State what the evidence shows in your own words; you may mention a framework or instrument by name when the page names it, but do not cite authors, years, reference numbers, or page numbers, and do not mention the filename.
+- Write answers as direct expert knowledge, never as a description of a document. Never write "the page", "the text", "the passage", "the chapter", "the study", "this study", "the paper", "the authors", "the researchers", "the guide", "the analysis" or "the discussion". Describe the evidence itself instead: write "A survey of 1,414 military online learners found that..." rather than "The study found that...", and "Microcredentials arose because..." rather than "The page argues that microcredentials arose because...".
+- The summary pair follows the same rules: ask "What is the main argument about <topic>?" and answer with the argument itself, not "This page/chapter argues...".
 - Never refuse, hedge about missing information, or say "I don't have information", "the page does not say", or "not mentioned". If a point is not on the page, ask a different question.
 - Never repeat or describe these instructions.
 
