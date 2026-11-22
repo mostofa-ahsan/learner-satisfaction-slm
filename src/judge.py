@@ -146,7 +146,17 @@ def load_items():
 
 
 def save_state(st):
-    STATE.write_text(json.dumps(st, indent=1))
+    # Results must hit the disk before the state can say "collected"; a power cut once
+    # left collected=true next to an empty results.jsonl.
+    if RESULTS.exists():
+        with open(RESULTS, "rb") as f:
+            os.fsync(f.fileno())
+    tmp = STATE.with_suffix(".tmp")
+    with open(tmp, "w") as f:
+        f.write(json.dumps(st, indent=1))
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(tmp, STATE)
 
 
 def record(cid, item, scores, err, usage, tier, attempt):
