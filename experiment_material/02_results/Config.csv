@@ -1,0 +1,76 @@
+item,value
+Base model,meta-llama/Llama-3.1-8B-Instruct
+Weights loaded,unsloth/Meta-Llama-3.1-8B-Instruct-bnb-4bit
+Training mode,4-bit QLoRA
+LoRA r,64
+LoRA alpha,128
+LoRA dropout,0.05
+LoRA target_modules,"['q_proj', 'k_proj', 'v_proj', 'o_proj', 'gate_proj', 'up_proj', 'down_proj']"
+train epochs,1
+train learning_rate,0.0003
+train lr_scheduler,cosine
+train warmup_ratio,0.03
+train per_device_batch_size,1
+train grad_accum,16
+train max_seq_len,2048
+train logging_steps,10
+train eval_steps,100
+train save_steps,200
+train save_total_limit,3
+train seed,42
+train gradient_checkpointing,False
+train optim,adamw_8bit
+train weight_decay,0.0
+train max_hours,7.0
+Effective max_seq_len,2048
+Gradient checkpointing,False
+Train examples,14115
+Validation examples (2% PDFs),510
+Validation PDFs,"P0024, P0107, P0211"
+Test examples,640
+Trainable params,167772160
+Trainable % (of 8.03B),2.089
+Optimizer steps,883
+Train time (min),55.8
+Peak VRAM reserved (GB),9.11
+Final validation loss,2.104592800140381
+Inference,"greedy, max_new_tokens 256, batch 1, same system prompt, 4-bit base for both models"
+Hardware,"NVIDIA GeForce RTX 3090 (24 GB), WSL2"
+Python,3.12.3
+torch / CUDA,2.14.1+cu130 / 13.0
+unsloth,2026.11.9
+transformers,5.17.0
+trl,1.15.0
+peft,0.22.0
+bitsandbytes,0.50.2
+accelerate,1.16.0
+datasets,4.8.5
+sacrebleu,2.6.0
+rouge-score,0.1.2
+bert-score,0.3.13
+detoxify,0.5.4
+anthropic,2.12.0
+Judge model,claude-sonnet-5-5 (Message Batches API)
+Judge settings,"thinking adaptive, effort low, structured JSON output (json_schema), no temperature/top_p, rubric in cached system block, blind to model identity, base/ft items shuffled"
+Judge batches,msgbatch_01GveYNR6MoW9X9yaC7v7Fcw
+Judge cost USD (batch price $1/$5 per MTok),1.6022
+Judge rubric,"You are an impartial expert evaluator of answers about online learner satisfaction in higher education.
+You will receive a question, a reference answer written from the source material, and a candidate answer.
+Rate the candidate answer on five criteria, each an integer from 1 to 5, using this rubric (Table 6.1):
+
+- Relevance: how well the candidate answer addresses the question asked.
+  1 = off-topic; 5 = perfectly relevant.
+- Correctness: factual accuracy of the candidate answer judged against the reference answer.
+  1 = wrong; 5 = perfectly correct.
+- Completeness: how fully the candidate answer covers the key points of the reference answer.
+  1 = misses all key points; 5 = fully complete.
+- Conciseness: whether the candidate answer is focused and free of unnecessary or repetitive content.
+  1 = very verbose or padded; 5 = perfectly concise.
+- Overall: overall quality of the candidate answer as a response to the question.
+  1 = poor; 5 = excellent.
+
+Use the full scale; intermediate scores (2-4) mean the answer lies between the anchors.
+Judge only the candidate answer. The reference answer is the standard for correctness and completeness;
+information in the candidate that is plausible but absent from the reference should not raise correctness.
+Do not reward length for its own sake. Give a short rationale (one or two sentences).
+Return only the JSON object required by the output schema."

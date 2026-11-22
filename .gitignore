@@ -7,3 +7,6 @@ __pycache__/
 *.pyc
 outputs/
 unsloth_compiled_cache/
+*.pdf
+*.PDF
+# experiment_material/ is committed; files > 50 MB are excluded by src/build_experiment_material.py

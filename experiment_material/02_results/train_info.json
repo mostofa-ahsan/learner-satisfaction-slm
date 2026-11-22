@@ -1,0 +1,28 @@
+{
+ "model_loaded": "unsloth/Meta-Llama-3.1-8B-Instruct-bnb-4bit",
+ "mode": "4-bit QLoRA",
+ "bf16": true,
+ "vram_gb": 24.0,
+ "max_seq_len": 2048,
+ "gradient_checkpointing": false,
+ "trainable_params": 167772160,
+ "total_params_reported": 4708372480,
+ "total_params_logical": 8198033408,
+ "trainable_pct": 2.0464927580836716,
+ "train_examples": 14115,
+ "val_examples": 510,
+ "val_pdfs": [
+  "P0024",
+  "P0107",
+  "P0211"
+ ],
+ "subset": null,
+ "first_example_label_tokens": 86,
+ "first_example_tokens": 171,
+ "train_seconds": 3349.701665878296,
+ "resumed_from": null,
+ "global_steps": 883,
+ "peak_vram_gb": 9.11328125,
+ "peak_vram_allocated_gb": 8.732030868530273,
+ "final_eval_loss": 2.104592800140381
+}

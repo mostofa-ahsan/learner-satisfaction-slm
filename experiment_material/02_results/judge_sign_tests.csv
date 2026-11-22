@@ -1,0 +1,6 @@
+criterion,n_items,mean_base,mean_ft,diff_ft_minus_base,ft_better,ft_worse,ties,sign_test_p_two_sided
+relevance,640,3.6641,3.5719,-0.0922,106,158,376,1.645e-03
+correctness,640,2.3062,2.0984,-0.2078,107,221,312,2.934e-10
+completeness,640,1.9734,1.7406,-0.2328,53,190,397,2.719e-19
+conciseness,640,3.2938,3.7156,0.4219,318,51,271,2.817e-48
+overall,640,2.3078,2.0719,-0.2359,86,216,338,4.629e-14

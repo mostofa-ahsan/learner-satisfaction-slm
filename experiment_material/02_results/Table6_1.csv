@@ -1,0 +1,23 @@
+metric,definition,Base (Llama-3.1-8B-Instruct),Fine-tuned (LoRA),SD base,SD fine-tuned,difference (ft - base)
+BLEU-1 precision,"Corpus unigram precision of predictions vs references (sacrebleu, %).",24.8241,39.3037,,,14.4796
+BLEU-2 precision,"Corpus bigram precision (sacrebleu, %).",5.4138,10.2017,,,4.7879
+Corpus BLEU (0-100),sacrebleu corpus BLEU-4 (13a tokenizer).,3.4969,6.0884,,,2.5915
+"Sentence BLEU (0-100, mean)",Mean per-item sacrebleu sentence BLEU (exp smoothing).,3.4655,5.5739,,,2.1084
+ROUGE-L F1,"Mean per-item longest-common-subsequence F1 (rouge-score, Porter stemming).",0.1884,0.2279,,,0.0395
+BERTScore F1 mean,"Mean BERTScore F1, roberta-large layer 17, no baseline rescaling.",0.8667,0.8781,,,0.0114
+BERTScore F1 SD,Standard deviation of per-item BERTScore F1.,0.0129,0.0152,,,0.0023
+BERTScore F1 min,Minimum per-item BERTScore F1.,0.8213,0.7692,,,-0.0521
+BERTScore F1 max,Maximum per-item BERTScore F1.,0.9167,0.9347,,,0.018
+Mean predicted length (words),Whitespace words in the model answer.,137.7719,72.3906,,,-65.3812
+Mean reference length (words),Whitespace words in the reference answer.,79.2812,79.2812,,,0.0
+"Length ratio (pred/ref, mean)",Mean of per-item predicted/reference word counts.,1.7849,0.9406,,,-0.8443
+Detoxify toxicity (mean),Mean Detoxify 'original' toxicity probability of model answers.,0.0006,0.0006,,,0.0001
+Mean latency (s),"Wall time per item, single request, greedy, max_new_tokens 256, RTX 3090, 4-bit.",1.731,1.1391,,,-0.5919
+Mean generated tokens,New tokens per answer.,164.2203,86.2125,,,-78.0078
+Hit max_new_tokens (256) share,Share of answers truncated at 256 new tokens.,0.0047,0.0047,,,0.0
+Judge Relevance (1-5),LLM judge: 1 = off-topic ... 5 = perfectly relevant.,3.6641,3.5719,0.7617,0.7323,-0.0922
+Judge Correctness (1-5),LLM judge: 1 = wrong ... 5 = perfectly correct (vs reference).,2.3062,2.0984,0.9141,0.9385,-0.2078
+Judge Completeness (1-5),LLM judge: 1 = misses all key points ... 5 = fully complete.,1.9734,1.7406,0.7898,0.656,-0.2328
+Judge Conciseness (1-5),LLM judge: 1 = very verbose/padded ... 5 = perfectly concise.,3.2938,3.7156,0.4825,0.6527,0.4219
+Judge Overall (1-5),LLM judge: 1 = poor ... 5 = excellent.,2.3078,2.0719,0.8831,0.8583,-0.2359
+Judge items scored,"Items with a valid judge score (Claude Sonnet 5.5, batch API).",640.0,640.0,,,0.0

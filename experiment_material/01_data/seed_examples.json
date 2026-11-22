@@ -1,0 +1,42 @@
+{
+  "version": "placeholder-v1",
+  "description": "Few-shot seed QA pairs shown to the generator (inside the cached system prompt). To swap in the 28 expert pairs, replace the `examples` list (or the whole file) keeping the same per-item keys: question, answer, and optionally category and type ('paragraph' or 'summary'). A bare JSON list of such objects is also accepted. Changing this file changes the cached prompt prefix, which is expected.",
+  "examples": [
+    {
+      "category": "learner",
+      "type": "paragraph",
+      "question": "How does Internet self-efficacy relate to learner satisfaction in fully online higher education courses?",
+      "answer": "Internet self-efficacy is a learner's confidence in using the Internet and online tools to complete course tasks. Learners with higher Internet self-efficacy tend to report greater satisfaction in online courses because they spend less effort on navigation and technical problems and more on learning activities. In regression models of online learner satisfaction, Internet self-efficacy usually appears alongside interaction variables, with learner-content and learner-instructor interaction among the strongest predictors and learner-learner interaction typically weaker. Because self-efficacy can be developed, institutions often address it through orientation modules, practice activities, and early technical support."
+    },
+    {
+      "category": "instructor",
+      "type": "paragraph",
+      "question": "What are the three components of teaching presence in the Community of Inquiry framework, and why do they matter for online learner satisfaction?",
+      "answer": "In the Community of Inquiry framework, teaching presence has three components: instructional design and organization, facilitating discourse, and direct instruction. Design and organization cover course structure, timelines, and clear expectations. Facilitating discourse involves encouraging participation, acknowledging contributions, and keeping discussions productive. Direct instruction includes presenting content, giving feedback, and correcting misconceptions. Strong teaching presence is consistently associated with higher perceived learning and satisfaction in online courses, because it reduces the uncertainty and isolation learners can experience when the instructor is not physically present."
+    },
+    {
+      "category": "course_design",
+      "type": "paragraph",
+      "question": "Which course-related factors have been identified as critical to e-learner satisfaction in higher education?",
+      "answer": "Research on e-learner satisfaction has identified several course-related factors as critical. Course flexibility, meaning control over when and where learning happens, is valued by learners balancing study with work and family. Perceived course quality, including well-organized content and clear objectives, strongly shapes overall satisfaction. Diversity in assessment methods also matters, since varied tasks give learners several ways to show understanding. These factors operate alongside technology factors such as perceived usefulness and ease of use, and learner factors such as computer anxiety, which lowers satisfaction."
+    },
+    {
+      "category": "platform",
+      "type": "paragraph",
+      "question": "How does the DeLone and McLean information systems success model explain satisfaction with e-learning platforms?",
+      "answer": "The DeLone and McLean information systems success model proposes that system quality, information quality, and service quality influence both intention to use a system and user satisfaction, which in turn produce net benefits. Applied to e-learning platforms, system quality refers to reliability, speed, and ease of navigation of the learning management system. Information quality concerns the accuracy, relevance, and timeliness of course materials. Service quality covers responsive technical and instructional support. Studies using the model generally find that platform quality dimensions predict learner satisfaction, and that satisfaction predicts continued use and perceived learning benefits."
+    },
+    {
+      "category": "institutional_policy",
+      "type": "summary",
+      "question": "Why is emergency remote teaching distinguished from planned online learning when interpreting learner satisfaction data?",
+      "answer": "Emergency remote teaching is a temporary shift of instruction to remote delivery in response to a crisis, such as the COVID-19 campus closures. Planned online learning, by contrast, results from deliberate course design, faculty preparation, and institutional support built over months. Satisfaction measured during emergency remote teaching therefore reflects rushed conversions, uneven technology access, limited training, and pandemic-related stress, rather than the quality achievable in well-designed online programs. Institutional and policy decisions about the future of online education should treat crisis-period satisfaction data with caution and compare it to evidence from intentionally designed online courses."
+    },
+    {
+      "category": "measurement",
+      "type": "paragraph",
+      "question": "How is the reliability and validity of an online learner satisfaction questionnaire typically established?",
+      "answer": "Online learner satisfaction questionnaires are usually multi-item Likert-type scales grouped into dimensions such as instructor, course design, interaction, and technology. Internal consistency reliability is commonly assessed with Cronbach's alpha, with values of about 0.70 or higher treated as acceptable. Construct validity is examined through exploratory factor analysis to identify the dimension structure and confirmatory factor analysis to test model fit using indices such as CFI, TLI, and RMSEA. Content validity is supported through literature review and expert review of the items, and convergent and discriminant validity are often checked with average variance extracted and composite reliability."
+    }
+  ]
+}
