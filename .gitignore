@@ -5,3 +5,5 @@ logs/
 *.zip
 __pycache__/
 *.pyc
+outputs/
+unsloth_compiled_cache/
